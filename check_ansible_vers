@@ -1,6 +1,6 @@
 #!/bin/bash
 ansibleVersion=$(ansible --version | grep -m 1 ansible)
-if [[ -n $ansibleVersion ]]; then
+if [ -n "$ansibleVersion" ]; then
     echo "OK -- $ansibleVersion"
     exit 0
 else
