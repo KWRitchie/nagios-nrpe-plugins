@@ -1,0 +1,9 @@
+#!/bin/bash
+amqBrokers=$(ps -ef | grep java | grep broker | grep -v grep | wc -l)
+if [[ "$amqBrokers" ]]; then
+   echo "OK -- ActiveMQ Brokers -- $amqBrokers"
+   exit 0
+else
+   echo "WARN -- no brokers running"
+   exit 1
+fi
