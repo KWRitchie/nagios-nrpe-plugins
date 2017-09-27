@@ -1,6 +1,6 @@
 #!/bin/bash
 amqBrokers=$(ps -ef | grep java | grep broker | grep -v grep | wc -l)
-if [[ "$amqBrokers" ]]; then
+if [[ "$amqBrokers" -gt 1 ]]; then
    echo "OK -- ActiveMQ Brokers -- $amqBrokers"
    exit 0
 else
