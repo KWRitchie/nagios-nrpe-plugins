@@ -1,5 +1,6 @@
 #!/bin/bash
 ansibleVersion=$(ansible --version | awk '{print $2; exit}')
+#ansibleVersion=$(rpm -qa | grep ansible | cut -d'-' -f2)
 if [ "$ansibleVersion" ]; then
     echo "OK -- ansible version $ansibleVersion"
     exit 0
