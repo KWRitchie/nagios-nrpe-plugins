@@ -5,6 +5,6 @@ if [ "$ansibleVersion" ]; then
     echo "OK -- ansible version $ansibleVersion"
     exit 0
 else
-    echo "CRITICAL -- ansible not found"
-    exit 2
+    echo "WARN -- ansible not found"
+    exit 1
 fi
