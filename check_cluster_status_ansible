@@ -1,5 +1,5 @@
 #!/bin/bash
-clusterStatus=$(rabbitmqctl cluster_status | grep running_nodes | cut -d'[' -f2 | tr -d "'" | cut -d']' -f1)
+clusterStatus=$(sudo -u rabbitmq rabbitmqctl cluster_status | grep running_nodes | cut -d'[' -f2 | tr -d "'" | cut -d']' -f1)
 if [[ -n "$clusterStatus" ]]; then
    echo "OK -- RabbitMQ Cluster Healthy -- Servers: $clusterStatus"
    exit 0
