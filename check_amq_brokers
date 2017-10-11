@@ -1,7 +1,8 @@
 #!/bin/bash
 amqBrokers=$(ps -ef | grep java | grep broker | grep -v grep | wc -l)
 if [[ "$amqBrokers" -ge 1 ]]; then
-   echo "OK -- ActiveMQ Brokers -- $amqBrokers"
+   brokerName=$(ps -ef | grep java | grep -v grep | perl -lne 'print $1 if /instance=(.*)/' | awk '{print $1}' | sed 's@.*/@@')
+   echo "OK -- ActiveMQ Brokers -- $amqBrokers brokers -- $brokerName"
    exit 0
 else
    echo "WARN -- no brokers running"
