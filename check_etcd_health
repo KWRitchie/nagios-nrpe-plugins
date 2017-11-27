@@ -1,0 +1,11 @@
+#!/bin/bash
+masterOneETCDHealth=$(etcdctl -C https://YOUR_IP_OR_FQDN:2379 --ca-file=/etc/origin/master/master.etcd-ca.crt --cert-file=/etc/origin/master/master.etcd-client.crt --key-file=/etc/origin/master/master.etcd-client.key cluster-health | grep "got healthy result" | wc -l)
+
+if [[ -z $masterOne ]]; then
+   echo "OK -- Cluster is healthy"
+   exit 0
+else
+   echo "CRITICAL -- ETCD Unhealthy"
+   exit 2
+fi
+

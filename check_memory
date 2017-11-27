@@ -1,0 +1,12 @@
+#!/bin/bash
+
+memFree=$(free -m | awk '{print $7}' | sed '$d' | sed 1d)
+memUsed=$(free -m | awk '{print $3}' | sed '$d' | sed 1d)
+
+if [[ $memFree -gt 500 ]]; then
+     echo "OK -- MEM Free = $memFree MEM Used = $memUsed"
+     exit 0
+else
+     echo "CRITICAL -- MEM Free = $memFree MEM Used = $memUsed"
+     exit 2
+fi

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+inodePods=$(oc describe node NODE_NAME | grep "Non-terminated Pods" | awk '{print $3}' | cut -c2)
+
+if [[ $inodePods -le 100 ]]; then 
+   echo "OK -- $inodePods Pods currently running on inode2"
+   exit 0
+else
+   echo "CRITICAL -- $inodePods Pods currently running on NODE_NAME"
+   exit 2
+fi

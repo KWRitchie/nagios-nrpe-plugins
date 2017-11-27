@@ -1,0 +1,10 @@
+#!/bin/bash
+curl 172.30.151.176:5000/healthz
+
+if [ "$?" = 0 ]; then 
+  echo "OK -- Docker Registry is up"
+  exit 0
+else 
+  echo "ERROR -- Can't reach Docker Registry"
+  exit 2
+fi 

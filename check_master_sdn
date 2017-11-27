@@ -1,0 +1,11 @@
+#!/bin/bash
+
+masterSDN=$(systemctl status openvswitch | grep "SUCCESS" | wc -l)
+
+if [[ $masterSDN == 1 ]]; then
+   echo "OK -- OpenVSwitch Service (SDN) is Active"
+   exit 0
+else
+   echo "CRITICAL -- OpenVSwitch Service (SDN) is not running"
+   exit 2
+fi
