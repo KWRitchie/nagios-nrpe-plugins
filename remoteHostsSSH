@@ -1,6 +1,8 @@
 #!/bin/bash
+# define an acceptable threshold for remote connection count
+count=
 sshConnectionCount=$(w -i | sed 1,2d | awk '{print $3}' | wc -l)
-if [[ "$sshConnectionCount" -gt 2 ]]; then
+if [[ "$sshConnectionCount" -gt $count ]]; then
    sshHosts=$(w -i | sed 1,2d | awk '{print $3}' | awk -vORS=, '{print $1}')
    echo "WARN -- $sshConnectionCount SSH Connections -- $sshHosts"
    exit 1
